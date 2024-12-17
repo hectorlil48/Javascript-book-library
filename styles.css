@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  --bg-color: #e2f1e7;
+  --header-color: #629584;
+  --font-color: #243642;
+  --btn-bg-color: #387478;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button,
+input {
+  all: unset;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--bg-color);
+}
+
+header {
+  max-width: 1500px;
+  background-color: var(--header-color);
+  margin: 0 auto 40px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#addBookButton {
+  padding: 12px 36px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: var(--btn-bg-color);
+}
