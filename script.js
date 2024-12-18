@@ -14,23 +14,11 @@ const HarryPotterPartOne = new Book(
   true
 );
 
-const HarryPotterPartTwo = new Book(
-  "Harry Potter and the Chamber of Secrets",
-  "J.K. Rowling",
-  350,
-  true
-);
-
 const atomicHabbits = new Book("Atomic Habits", "James Clear", 320, false);
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 320, false);
 
-myLibrary.push(
-  HarryPotterPartOne,
-  HarryPotterPartTwo,
-  atomicHabbits,
-  theHobbit
-);
+myLibrary.push(HarryPotterPartOne, atomicHabbits, theHobbit);
 
 const bookList = document.getElementById("book-list");
 
@@ -42,7 +30,8 @@ function displayBooks() {
 
     bookDiv.innerHTML = `
     <h2 class="book-title">${book.title}</h2>
-    <div><p class="author">Author: ${book.author}</p>
+    <div>
+    <p class="author">Author: ${book.author}</p>
     <p>Pages: ${book.pages}</p>
     </div>
     <div class="card-buttons">
@@ -69,6 +58,38 @@ addBookButton.addEventListener("click", () => {
   }
 });
 
+function addBook(event) {
+  event.preventDefault();
+
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const isRead = document.getElementById("isRead").value === "true";
+
+  const newBook = new Book(title, author, pages, isRead);
+
+  myLibrary.push(newBook);
+
+  hiddenContainer.style.display = "none";
+  document.getElementById("bookForm").reset();
+  document.querySelectorAll("#bookForm input").forEach((input) => {
+    input.classList.remove("valid", "invalid");
+  });
+  displayBooks();
+}
+
+document.getElementById("bookForm").addEventListener("submit", addBook);
+
+document.getElementById("cancelButton").addEventListener("click", function () {
+  const form = document.getElementById("bookForm");
+
+  // Reset the form fields
+  form.reset();
+
+  // Hide the form's container
+  document.getElementById("hidden-container").style.display = "none";
+});
+
 function toggleRead(index, button) {
   const book = myLibrary[index];
   book.isRead = !book.isRead;
@@ -80,5 +101,18 @@ function deleteBook(index) {
   myLibrary.splice(index, 1);
   displayBooks();
 }
+
+document.getElementById("bookForm").addEventListener("input", (event) => {
+  if (event.target.tagName === "INPUT") {
+    const input = event.target;
+    if (input.checkValidity()) {
+      input.classList.remove("invalid");
+      input.classList.add("valid");
+    } else {
+      input.classList.remove("valid");
+      input.classList.add("invalid");
+    }
+  }
+});
 
 displayBooks();

@@ -29,10 +29,11 @@ body {
   background-color: var(--bg-color);
   color: var(--bg-color);
   position: relative;
+  padding: 0 10px;
 }
 
 header {
-  max-width: 1500px;
+  max-width: 1400px;
   background-color: var(--header-color);
   margin: 0 auto 40px;
   padding: 20px 30px;
@@ -66,6 +67,7 @@ button:focus {
   border-radius: 10px;
   padding: 20px;
   font-size: 1.2rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -81,6 +83,7 @@ button:focus {
 .card-buttons {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -102,15 +105,27 @@ button:focus {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  -webkit-box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 #bookForm input {
   border: 2px solid lightgray;
   border-radius: 4px;
   padding: 6px 0 6px 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#bookForm input.invalid {
+  border: 2px solid red;
+}
+
+#bookForm input:valid {
+  border: 2px solid green;
+}
+
+#bookForm input:focus {
+  border: 2px solid blue;
 }
 
 .read-container {
@@ -124,13 +139,13 @@ button:focus {
   border-radius: 4px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   #book-list {
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
   }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 750px) {
   header {
     padding: 16px;
   }
@@ -141,5 +156,9 @@ button:focus {
   }
   #book-list {
     grid-template-columns: repeat(1, 1fr); /* 1 columns */
+  }
+
+  #bookForm {
+    width: 300px;
   }
 }

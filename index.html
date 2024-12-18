@@ -13,27 +13,49 @@
         Add a Book
       </button>
     </header>
+    <main>
+      <div id="hidden-container">
+        <form id="bookForm">
+          <h3>Add New Book</h3>
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            required
+            aria-required="true"
+          />
+          <input
+            type="text"
+            id="author"
+            placeholder="Author"
+            required
+            aria-required="true"
+          />
+          <input
+            type="number"
+            id="pages"
+            placeholder="Pages"
+            required
+            min="1"
+          />
 
-    <div id="hidden-container">
-      <form id="bookForm">
-        <h3>Add New Book</h3>
-        <input type="text" id="title" placeholder="Title" />
-        <input type="text" id="author" placeholder="Author" />
-        <input type="number" id="pages" placeholder="Pages" />
+          <div class="read-container">
+            <label for="isRead">Have you read it yet?</label>
+            <select id="isRead">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <button type="submit" class="read-btn" id="addBook">Add Book</button>
+          <button type="button" class="read-btn" id="cancelButton">
+            Cancel
+          </button>
+        </form>
+      </div>
 
-        <div class="read-container">
-          <label for="isRead">Have you read it yet?</label>
-          <select id="isRead">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-        <button class="read-btn">Add Book</button>
-        <button class="read-btn">Cancel</button>
-      </form>
-    </div>
+      <div id="book-list"></div>
+    </main>
 
-    <main id="book-list"></main>
     <script src="./script.js"></script>
   </body>
 </html>
