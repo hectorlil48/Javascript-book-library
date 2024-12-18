@@ -13,6 +13,26 @@
         Add a Book
       </button>
     </header>
+
+    <div id="hidden-container">
+      <form id="bookForm">
+        <h3>Add New Book</h3>
+        <input type="text" id="title" placeholder="Title" />
+        <input type="text" id="author" placeholder="Author" />
+        <input type="number" id="pages" placeholder="Pages" />
+
+        <div class="read-container">
+          <label for="isRead">Have you read it yet?</label>
+          <select id="isRead">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <button class="read-btn">Add Book</button>
+        <button class="read-btn">Cancel</button>
+      </form>
+    </div>
+
     <main id="book-list"></main>
     <script src="./script.js"></script>
   </body>

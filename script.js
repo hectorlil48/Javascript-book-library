@@ -55,6 +55,20 @@ function displayBooks() {
   });
 }
 
+const addBookButton = document.getElementById("addBookButton");
+const hiddenContainer = document.getElementById("hidden-container");
+
+addBookButton.addEventListener("click", () => {
+  if (
+    hiddenContainer.style.display === "none" ||
+    hiddenContainer.style.display === ""
+  ) {
+    hiddenContainer.style.display = "block"; // Show the form
+  } else {
+    hiddenContainer.style.display = "none"; // Hide the form
+  }
+});
+
 function toggleRead(index, button) {
   const book = myLibrary[index];
   book.isRead = !book.isRead;
